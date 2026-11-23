@@ -1,0 +1,9 @@
+project: savantenvs/LibWrt
+target: osafeloader-extract
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/osafeloader-extract/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/osafeloader extract @@ -p os-image -o /dev/null
+    afl: true
+    timeout: 5

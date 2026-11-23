@@ -1,0 +1,12 @@
+project: savantenvs/LibWrt
+target: bcm4908img-bootfs-ls
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/bcm4908img-bootfs-ls/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/bcm4908img bootfs -i @@ ls
+    afl: true
+    timeout: 5
+    # images are >= 128 KiB (bootfs and UBI sit on 128 KiB steps); Mayhem's default max_length (8192)
+    # truncates every seed to 8 KiB, before the offset search finds the rootfs
+    max_length: 524288

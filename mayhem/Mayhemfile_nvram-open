@@ -1,0 +1,8 @@
+project: savantenvs/LibWrt
+target: nvram-open
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/nvram-open/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/nvram-open
+    libfuzzer: true

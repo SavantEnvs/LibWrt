@@ -1,0 +1,11 @@
+project: savantenvs/LibWrt
+target: fritz-tffs-nand-read
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fritz-tffs-nand-read/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/fritz_tffs_nand_read -d @@ -a
+    afl: true
+    timeout: 5
+    # the multi-segment seed is 16.5 KiB; Mayhem's default max_length (8192) would truncate it
+    max_length: 65536

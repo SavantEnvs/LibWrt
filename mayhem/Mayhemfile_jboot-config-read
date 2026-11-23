@@ -1,0 +1,9 @@
+project: savantenvs/LibWrt
+target: jboot-config-read
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/jboot-config-read/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/jboot_config_read -i @@ -m
+    afl: true
+    timeout: 5

@@ -1,0 +1,9 @@
+project: savantenvs/LibWrt
+target: fritz-tffs-read
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fritz-tffs-read/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/fritz_tffs_read -i @@ -a
+    afl: true
+    timeout: 5

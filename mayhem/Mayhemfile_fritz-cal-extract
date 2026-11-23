@@ -1,0 +1,9 @@
+project: savantenvs/LibWrt
+target: fritz-cal-extract
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fritz-cal-extract/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/fritz_cal_extract -e 0x207 -l 65536 @@
+    afl: true
+    timeout: 5

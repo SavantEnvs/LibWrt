@@ -1,0 +1,8 @@
+project: savantenvs/LibWrt
+target: ead-handle-packet
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/ead-handle-packet/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/ead-handle-packet
+    libfuzzer: true

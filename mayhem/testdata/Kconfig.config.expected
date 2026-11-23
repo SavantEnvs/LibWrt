@@ -1,0 +1,23 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# LibWrt fuzz seed 
+#
+CONFIG_MODULES=y
+
+#
+# Target options
+#
+CONFIG_TARGET_NAME="hello-fuzz"
+CONFIG_HAS_FPU=y
+CONFIG_KERNEL_SIZE=4096
+CONFIG_BASE_ADDR=0x80000000
+# end of Target options
+
+# CONFIG_COMP_GZIP is not set
+CONFIG_COMP_XZ=y
+CONFIG_DRIVER=m
+# CONFIG_DRIVER_DEBUG is not set
+
+#
+# end of seed
+#

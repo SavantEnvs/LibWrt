@@ -1,0 +1,9 @@
+project: savantenvs/LibWrt
+target: osafeloader-info
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/osafeloader-info/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/osafeloader info @@
+    afl: true
+    timeout: 5

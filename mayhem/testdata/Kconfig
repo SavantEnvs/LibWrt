@@ -1,0 +1,59 @@
+mainmenu "LibWrt fuzz seed $(ARCH)"
+
+NAME := fuzz
+greet = hello-$(1)
+
+config MODULES
+	bool "Enable loadable module support"
+	modules
+	default y
+
+menu "Target options"
+
+config TARGET_NAME
+	string "Target name"
+	default "$(greet,$(NAME))"
+
+config HAS_FPU
+	bool
+	default y if TARGET_NAME = "hello-fuzz"
+
+config KERNEL_SIZE
+	int "Kernel partition size (KiB)"
+	range 1024 65536
+	default 4096
+
+config BASE_ADDR
+	hex "Load address"
+	default 0x80000000
+
+endmenu
+
+choice
+	prompt "Compression"
+	default COMP_XZ
+
+config COMP_GZIP
+	bool "gzip"
+
+config COMP_XZ
+	bool "xz"
+	select HAS_FPU
+
+endchoice
+
+config DRIVER
+	tristate "Some driver"
+	depends on MODULES && !COMP_GZIP
+	default m
+	help
+	  A tristate symbol.
+
+if DRIVER
+config DRIVER_DEBUG
+	bool "Driver debug"
+	imply HAS_FPU
+	default n
+endif
+
+comment "end of seed"
